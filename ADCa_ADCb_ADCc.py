@@ -12,8 +12,8 @@ def counting_estimators(time_window, AoT, Rise_speed_synchro, Fall_speed_synchro
             rise_counter += 1
     rise_counter += 1
 
-    for item in time_window[tmp:]:
-        if item > 50:
+    for item in reversed(time_window):
+        if item > 50 and item < time_window[index]:
             fall_counter += 1
     fall_counter -= 1
 
@@ -78,9 +78,9 @@ def data_processing_from_tssi_file(file_path):
     flag_CH2 = 0
     flag_CH3 = 0
 
-    cnt_CH1 = 24
-    cnt_CH2 = 24
-    cnt_CH3 = 24
+    cnt_CH1 = 20
+    cnt_CH2 = 20
+    cnt_CH3 = 20
 
     for line in lines:
         i += 1
@@ -115,7 +115,7 @@ def data_processing_from_tssi_file(file_path):
                                                                                                         AoT_CH1,
                                                                                                         Rise_speed_synchro_CH1,
                                                                                                         Fall_speed_synchro_CH1)
-                cnt_CH1 = 24
+                cnt_CH1 = 20
                 flag_CH1 = 0
 
         if flag_CH2 == 1:
@@ -126,7 +126,7 @@ def data_processing_from_tssi_file(file_path):
                                                                                                         AoT_CH2,
                                                                                                         Rise_speed_synchro_CH2,
                                                                                                         Fall_speed_synchro_CH2)
-                cnt_CH2 = 24
+                cnt_CH2 = 20
                 flag_CH2 = 0
 
         if flag_CH3 == 1:
@@ -137,7 +137,7 @@ def data_processing_from_tssi_file(file_path):
                                                                                                         AoT_CH3,
                                                                                                         Rise_speed_synchro_CH3,
                                                                                                         Fall_speed_synchro_CH3)
-                cnt_CH3 = 24
+                cnt_CH3 = 20
                 flag_CH3 = 0
 
         if flag_CH1 == 1 or flag_CH2 == 1 or flag_CH3 == 1:
