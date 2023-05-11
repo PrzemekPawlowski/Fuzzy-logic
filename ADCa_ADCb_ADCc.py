@@ -12,9 +12,11 @@ def counting_estimators(time_window, AoT, Rise_speed_synchro, Fall_speed_synchro
             rise_counter += 1
     rise_counter += 1
 
-    for item in reversed(time_window):
-        if item > 50 and item < time_window[index]:
+    for item in time_window[index:]:
+        if item > 50:
             fall_counter += 1
+        else:
+            break
     fall_counter -= 1
 
     halfMax = (max(time_window) / 2)
